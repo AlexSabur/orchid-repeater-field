@@ -95,14 +95,10 @@ class Repeater extends Field
 
     /**
      * Creating an instance of the repeater field.
-     *
-     * @param  string  $name
-     * @return Repeater
      */
-    public static function make(string $name): self
+    public function __construct()
     {
-        return (new static)->name($name)
-            ->set('original_name', $name)
+        $this->set('original_name', $this->get('name'))
             ->value([])
             ->set('template', 'repeater_'.Str::random(32));
     }
